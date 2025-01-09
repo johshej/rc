@@ -3,65 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitation</title>
+    <title>Embed Site Chat</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #69433A;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+        #input-container {
+            display: flex;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
             color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #070db4;
-        }
-        .box {
-            background-color: white;
-            color: #070db4;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 8px;
-        }
-        a {
-            color: #070db4;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .map {
-            margin-top: 15px;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>You're Invited!</h1>
-        <p>We are thrilled to invite you to celebrate with us. Join us for a special day filled with love, joy, and memories.</p>
-
-        <div class="box">
-            <h2>Details</h2>
-            <p><strong>Place:</strong> [Church Name]</p>
-            <p><strong>Date:</strong> [Date]</p>
-            <p><strong>Time:</strong> [Time]</p>
-        </div>
-
-        <div class="box">
-            <h2>Links</h2>
-            <p><a href="[Wish List URL]" target="_blank">View Our Wish List</a></p>
-            <p class="map"><a href="[Google Maps Link to Church]" target="_blank">Directions to the Church</a></p>
-            <p class="map"><a href="[Google Maps Link to Reception]" target="_blank">Directions to the Reception</a></p>
-            <p class="map"><a href="[Google Maps Link to Party]" target="_blank">Directions to the Party</a></p>
-        </div>
-
-        <div class="box">
-            <h2>Practical Information</h2>
-            <p>[Add any important details here, such as dress code, parking instructions, or RSVP information]</p>
-        </div>
+    <div id="chat-container">
+        <iframe src="https://førrisdahlhejslet.my.canva.site/" title="Embedded Site"></iframe>
     </div>
+    <div id="input-container">
+        <input type="text" id="chat-input" placeholder="Type your message here...">
+        <button id="send-button">Send</button>
+    </div>
+    <script>
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                alert(`Message sent: ${message}`); // Placeholder action
+                chatInput.value = '';
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
 </body>
 </html>
